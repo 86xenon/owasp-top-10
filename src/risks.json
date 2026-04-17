@@ -1,0 +1,94 @@
+{
+  "owaspTop10": [
+    {
+      "id": 1,
+      "title": "Broken Access Control",
+      "what": "People can access information or actions they shouldn’t, like viewing someone else’s account or editing data without permission.",
+      "why": "Attackers could steal personal information, change important data, or take over user accounts.",
+      "how": "Ensure users can only access what they’re allowed to by enforcing permissions on the server side.",
+      "analogy": "Like someone walking into a locked office because the door was accidentally left open.",
+      "severity": "High"
+    },
+    {
+      "id": 2,
+      "title": "Weak Data Protection",
+      "what": "Sensitive data, like passwords or credit card numbers, isn’t properly secured.",
+      "why": "If attackers gain access, they can easily read and misuse this information.",
+      "how": "Encrypt sensitive data, use HTTPS, and never store passwords in plain text.",
+      "analogy": "Like sending a postcard with your bank details written on it for anyone to read.",
+      "severity": "High"
+    },
+    {
+      "id": 3,
+      "title": "Injection Attacks",
+      "what": "Attackers send harmful input (like code) into a website that gets executed by the system.",
+      "why": "This can allow attackers to access, modify, or delete data, or even take control of the system.",
+      "how": "Validate user input and use secure coding practices like prepared statements for databases.",
+      "analogy": "Like tricking a cashier into entering a secret command instead of ringing up an item.",
+      "severity": "High"
+    },
+    {
+      "id": 4,
+      "title": "Insecure Design",
+      "what": "The application is built without considering security from the beginning.",
+      "why": "Even if it works, it may contain built-in weaknesses that attackers can exploit.",
+      "how": "Plan for security early by thinking through potential risks during the design phase.",
+      "analogy": "Like building a house without locks and trying to add them later.",
+      "severity": "Medium"
+    },
+    {
+      "id": 5,
+      "title": "Security Misconfiguration",
+      "what": "System settings are left in an unsafe state, such as using default passwords or leaving features exposed.",
+      "why": "Attackers can take advantage of these easy-to-find weaknesses to gain access.",
+      "how": "Secure configurations by changing defaults, disabling unused features, and regularly reviewing settings.",
+      "analogy": "Like leaving your front door unlocked with a sign that says ‘key under the mat.’",
+      "severity": "High"
+    },
+    {
+      "id": 6,
+      "title": "Outdated or Vulnerable Software",
+      "what": "The application uses old or unpatched software, libraries, or plugins.",
+      "why": "Attackers can exploit known vulnerabilities that already have fixes available.",
+      "how": "Keep all software up to date and remove anything that is no longer needed.",
+      "analogy": "Like using an old lock that burglars already know how to pick.",
+      "severity": "High"
+    },
+    {
+      "id": 7,
+      "title": "Authentication Failures",
+      "what": "Problems with login systems, such as weak passwords or poor session management.",
+      "why": "Attackers can easily gain access to user accounts and impersonate others.",
+      "how": "Use strong passwords, enable multi-factor authentication, and properly manage user sessions.",
+      "analogy": "Like using ‘1234’ as a lock combination on your front door.",
+      "severity": "High"
+    },
+    {
+      "id": 8,
+      "title": "Data Integrity Failures",
+      "what": "The system trusts data or software that could be tampered with.",
+      "why": "Attackers could insert malicious updates or alter important data without being detected.",
+      "how": "Verify the integrity of data and software using trusted sources and validation methods.",
+      "analogy": "Like installing a package that’s been opened and altered without checking it first.",
+      "severity": "Medium"
+    },
+    {
+      "id": 9,
+      "title": "Logging and Monitoring Failures",
+      "what": "The system does not properly track or alert on suspicious activity.",
+      "why": "Attacks can go unnoticed, allowing more damage before anyone responds.",
+      "how": "Log important actions and monitor systems to quickly detect and respond to threats.",
+      "analogy": "Like having no security cameras or alarms in a store.",
+      "severity": "Medium"
+    },
+    {
+      "id": 10,
+      "title": "Server-Side Request Forgery (SSRF)",
+      "what": "Attackers trick a server into making requests to unintended locations.",
+      "why": "This can expose internal systems or sensitive data that should not be publicly accessible.",
+      "how": "Restrict and validate outgoing requests to ensure only safe destinations are allowed.",
+      "analogy": "Like convincing a receptionist to fetch confidential files from a restricted room.",
+      "severity": "Medium"
+    }
+  ]
+}
