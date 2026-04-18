@@ -50,12 +50,12 @@ body {
   font-family: var(--font-body);
   background: linear-gradient(135deg, var(--color-bg-dark) 0%, #0D1B2A 100%);
   color: var(--color-text-primary);
-  min-height: 100vh;
+  min-height: 100%;
   overflow-x: hidden;
 }
 
 .app {
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -78,7 +78,7 @@ body {
 
 /* Header */
 .header {
-  padding: var(--spacing-lg) var(--spacing-md);
+  padding: 20px;
   text-align: center;
   position: relative;
   z-index: 10;
@@ -109,7 +109,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: var(--spacing-xs);
+  /*margin-bottom: var(--spacing-xs);*/
   text-shadow: 0 0 60px rgba(0, 217, 255, 0.3);
 }
 
@@ -128,7 +128,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-md);
+  /*padding: var(--spacing-md);*/
   position: relative;
   z-index: 10;
 }
@@ -136,7 +136,7 @@ body {
 /* Carousel Container */
 .carousel-container {
   width: 100%;
-  max-width: 900px;
+  max-width: 90%;
   display: flex;
   align-items: center;
   gap: var(--spacing-md);
@@ -183,7 +183,7 @@ body {
   flex: 1;
   background: var(--color-bg-card);
   border-radius: var(--radius-lg);
-  padding: var(--spacing-xl);
+  padding: 25px;
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--color-bg-card-light);
   min-height: 500px;
@@ -237,14 +237,20 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: 15px;
 }
 
 .risk-number {
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: var(--color-primary);
   letter-spacing: 2px;
+}
+
+.risk-number-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .severity-badge {
@@ -254,6 +260,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
+    align-self: center;
 }
 
 .severity-badge.high {
@@ -279,21 +286,23 @@ body {
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 4vw, 2.5rem);
   color: var(--color-text-primary);
-  margin-bottom: var(--spacing-lg);
+  /*margin-bottom: var(--spacing-lg);*/
+    margin: 0;
   letter-spacing: 2px;
   line-height: 1.2;
 }
 
 /* Risk Sections - 2x2 grid, larger readable sizing */
 .risk-sections {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-  gap: calc(var(--spacing-md) * 0.9);
+    display: grid;
+    grid-template-columns: 1fr; /* one column layout (1x4) */
+    gap: 1rem;
 }
 
 .risk-section {
   padding: calc(var(--spacing-md) * 1.1);
+    width: 100%;
+    box-sizing: border-box;
   background: rgba(255, 255, 255, 0.03);
   border-radius: var(--radius-md);
   border-left: 4px solid var(--color-primary);
@@ -350,7 +359,7 @@ body {
   gap: var(--spacing-sm);
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: var(--spacing-md);
+  /*margin-bottom: 15px;*/
 }
 
 .dot {
@@ -401,7 +410,7 @@ body {
 
 /* Footer */
 .footer {
-  padding: var(--spacing-md);
+  padding: 25px;
   text-align: center;
   color: var(--color-text-muted);
   font-size: 0.85rem;

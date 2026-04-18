@@ -133,13 +133,15 @@ function App() {
             <div className="risk-card">
               <div className={`risk-content ${animPhase === 'exiting' ? 'exiting' : ''} ${animPhase === 'entering' ? 'entering' : ''}`}>
                 <div className="risk-header">
-                  <span className="risk-number">#{currentRisk.id}</span>
+                    <div className="risk-number-name">
+                        <span className="risk-number">#{currentRisk.id}</span>
+                        <h2 className="risk-title">{currentRisk.title}</h2>
+                    </div>
                   <span className={`severity-badge ${getSeverityClass(currentRisk.severity)}`}>
                   {currentRisk.severity} Risk
                 </span>
                 </div>
 
-                <h2 className="risk-title">{currentRisk.title}</h2>
 
                 <div className="risk-sections">
                   <div className="risk-section">
