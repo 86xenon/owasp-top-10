@@ -59,6 +59,7 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
+  padding-top: 0; /* no extra padding needed for nav */
 }
 
 /* Animated background effect */
@@ -74,6 +75,43 @@ body {
           radial-gradient(circle at 80% 80%, rgba(0, 217, 255, 0.1) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
+}
+
+/* Top Navigation (fixed, top-left) */
+.topnav {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 50; /* above main content */
+  background: transparent;
+}
+
+.topnav-list {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.topnav-link {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.03);
+  color: var(--color-text-muted);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+
+.topnav-link:hover {
+  transform: translateY(-2px);
+}
+
+.topnav-link.active {
+  color: var(--color-text-primary);
+  background: linear-gradient(90deg, rgba(0,217,255,0.06), rgba(108,92,231,0.04));
+  border-color: rgba(0,217,255,0.12);
 }
 
 /* Header */
@@ -307,14 +345,14 @@ body {
 }
 
 .risk-section {
-  padding: calc(var(--spacing-md) * 1.1);
+  padding: 20px;
     width: 100%;
     box-sizing: border-box;
   background: rgba(255, 255, 255, 0.03);
   border-radius: var(--radius-md);
   border-left: 4px solid var(--color-primary);
   transition: all 0.3s ease;
-  min-height: 120px;
+  min-height: 100px;
 }
 
 .risk-section:hover {
@@ -419,6 +457,91 @@ body {
   font-size: 0.85rem;
   position: relative;
   z-index: 10;
+}
+
+/* Sources Page Styles */
+.sources-page {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 28px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: var(--shadow-md);
+  color: var(--color-text-primary);
+}
+
+.sources-header {
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.sources-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+  letter-spacing: 2px;
+}
+
+.sources-subtitle {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.sources-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 18px;
+}
+
+.source-item {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  background: rgba(255,255,255,0.01);
+  border: 1px solid rgba(255,255,255,0.02);
+}
+
+/* Ensure the details column can shrink and wrap long content (like long URLs) */
+.source-details {
+  flex: 1 1 auto;
+  min-width: 0; /* allow flex child to shrink below content width */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Align items to the top so multi-line content flows nicely */
+.source-item {
+  align-items: flex-start;
+}
+
+.source-title {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.source-caption {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.source-link-wrap {
+  /* allow extremely long URLs to break and wrap inside the container */
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-wrap: break-word;
+}
+
+.source-link {
+  color: var(--color-primary);
+  text-decoration: underline;
+  display: inline-block;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 /* Responsive Design */

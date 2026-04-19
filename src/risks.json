@@ -11,7 +11,7 @@
       "image": "hacker.png",
       "imageAlt": "Hacker illustration",
       "imageCaption": "Designed by Freepik",
-      "imageSource": "freepik.com"
+      "imageSource": "https://www.freepik.com"
     },
     {
       "id": 2,
@@ -37,7 +37,7 @@
       "image": "syringe.png",
       "imageAlt": "Transparent syringe illustration",
       "imageCaption": "Designed by Freepik",
-      "imageSource": "freepik.com"
+      "imageSource": "https://www.freepik.com"
     },
     {
       "id": 4,
@@ -50,7 +50,7 @@
       "image": "decrease.jpg",
       "imageAlt": "Insecure design illustration",
       "imageCaption": "Designed by Freepik",
-      "imageSource": "freepik.com"
+      "imageSource": "https://www.freepik.com"
     },
     {
       "id": 5,
@@ -76,7 +76,7 @@
       "image": "outdated.jpg",
       "imageAlt": "Outdated software illustration",
       "imageCaption": "Designed by Freepik",
-      "imageSource": "freepik.com"
+      "imageSource": "https://www.freepik.com"
     },
     {
       "id": 7,
@@ -89,7 +89,7 @@
       "image": "authentication.jpg",
       "imageAlt": "Authentication illustration",
       "imageCaption": "Designed by Freepik",
-      "imageSource": "freepik.com"
+      "imageSource": "https://www.freepik.com"
     },
     {
       "id": 8,
@@ -128,7 +128,7 @@
       "image": "forgery.jpg",
       "imageAlt": "SSRF illustration",
       "imageCaption": "Designed by Freepik",
-      "imageSource": "freepik.com"
+      "imageSource": "https://www.freepik.com"
     }
   ]
 }

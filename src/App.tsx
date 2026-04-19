@@ -14,6 +14,8 @@ import forgeryImg from './assets/forgery.jpg';
 import loggingImg from './assets/logging.png';
 import integrityImg from './assets/integrity.png';
 import outdatedImg from './assets/outdated.jpg';
+import Sources from './sources';
+import TopNav from './topnav';
 
 interface Risk {
   id: number;
@@ -33,6 +35,7 @@ function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
   // animation phase: 'idle' | 'exiting' | 'entering'
   const [animPhase, setAnimPhase] = useState<'idle' | 'exiting' | 'entering'>('idle');
+  const [page, setPage] = useState<'home' | 'sources'>('home');
   const risks: Risk[] = risksData.owaspTop10;
 
   const OUT_MS = 300; // match CSS fadeOut duration
@@ -147,114 +150,119 @@ function App() {
   };
 
   return (
-      <div className="app">
-        <header className="header">
-          <div className="header-content">
-            <h1 className="main-title">OWASP TOP 10</h1>
-            <p className="subtitle">Web Application Security Risks</p>
-          </div>
-        </header>
+    <div className="app">
+      <TopNav active={page} onNavigate={(p) => setPage(p)} />
+      {page === 'sources' ? (
+        <Sources />
+      ) : (
+        <>
+         <header className="header">
+           <div className="header-content">
+             <h1 className="main-title">OWASP TOP 10</h1>
+             <p className="subtitle">Web Application Security Risks</p>
+           </div>
+         </header>
 
-        <main className="main-content">
-          <div className="carousel-container">
-            <button
-                className="nav-button prev"
-                onClick={prevSlide}
-                aria-label="Previous risk"
-                disabled={animPhase !== 'idle'}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
+         <main className="main-content">
+           <div className="carousel-container">
+             <button
+                 className="nav-button prev"
+                 onClick={prevSlide}
+                 aria-label="Previous risk"
+                 disabled={animPhase !== 'idle'}
+             >
+               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                 <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+               </svg>
+             </button>
 
-            <div className="risk-card">
-              <div className={`risk-content ${animPhase === 'exiting' ? 'exiting' : ''} ${animPhase === 'entering' ? 'entering' : ''}`}>
-                <div className="risk-header">
-                    <div className="risk-number-name">
-                        <span className="risk-number">#{currentRisk.id}</span>
-                        <h2 className="risk-title">{currentRisk.title}</h2>
+             <div className="risk-card">
+               <div className={`risk-content ${animPhase === 'exiting' ? 'exiting' : ''} ${animPhase === 'entering' ? 'entering' : ''}`}>
+                 <div className="risk-header">
+                     <div className="risk-number-name">
+                         <span className="risk-number">#{currentRisk.id}</span>
+                         <h2 className="risk-title">{currentRisk.title}</h2>
+                     </div>
+                   <span className={`severity-badge ${getSeverityClass(currentRisk.severity)}`}>
+                   {currentRisk.severity} Risk
+                 </span>
+                 </div>
+
+
+                 {/* risk-body: left = stacked 4 sections, right = image + caption */}
+                 <div className="risk-body">
+                   <div className="risk-sections">
+                    <div className="risk-section">
+                      <div className="section-header">
+                        <h3 className="section-title">What is it?</h3>
+                      </div>
+                      <p className="section-content">{currentRisk.what}</p>
                     </div>
-                  <span className={`severity-badge ${getSeverityClass(currentRisk.severity)}`}>
-                  {currentRisk.severity} Risk
-                </span>
+
+                    <div className="risk-section">
+                      <div className="section-header">
+                        <h3 className="section-title">Why does it matter?</h3>
+                      </div>
+                      <p className="section-content">{currentRisk.why}</p>
+                    </div>
+
+                    <div className="risk-section">
+                      <div className="section-header">
+                        <h3 className="section-title">How to prevent it?</h3>
+                      </div>
+                      <p className="section-content">{currentRisk.how}</p>
+                    </div>
+
+                    <div className="risk-section analogy">
+                      <div className="section-header">
+                        <h3 className="section-title">Think of it like...</h3>
+                      </div>
+                      <p className="section-content analogy-text">{currentRisk.analogy}</p>
+                    </div>
+                   </div>
+
+                   <aside className="risk-image-block" aria-hidden={false}>
+                     <img src={imgSrc} alt={imgAlt} className="risk-image" />
+                   </aside>
+                 </div>
                 </div>
+              </div>
 
+             <button
+                 className="nav-button next"
+                 onClick={nextSlide}
+                 aria-label="Next risk"
+                 disabled={animPhase !== 'idle'}
+             >
+               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                 <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+               </svg>
+             </button>
+           </div>
 
-                {/* risk-body: left = stacked 4 sections, right = image + caption */}
-                <div className="risk-body">
-                  <div className="risk-sections">
-                   <div className="risk-section">
-                     <div className="section-header">
-                       <h3 className="section-title">What is it?</h3>
-                     </div>
-                     <p className="section-content">{currentRisk.what}</p>
-                   </div>
+           <div className="progress-dots">
+             {risks.map((risk, index) => (
+                 <button
+                     key={risk.id}
+                     className={`dot ${index === currentIndex ? 'active' : ''}`}
+                     onClick={() => goToSlide(index)}
+                     aria-label={`Go to risk ${risk.id}: ${risk.title}`}
+                     disabled={animPhase !== 'idle'}
+                 >
+                   <span className="dot-number">{risk.id}</span>
+                 </button>
+             ))}
+           </div>
+         </main>
 
-                   <div className="risk-section">
-                     <div className="section-header">
-                       <h3 className="section-title">Why does it matter?</h3>
-                     </div>
-                     <p className="section-content">{currentRisk.why}</p>
-                   </div>
-
-                   <div className="risk-section">
-                     <div className="section-header">
-                       <h3 className="section-title">How to prevent it?</h3>
-                     </div>
-                     <p className="section-content">{currentRisk.how}</p>
-                   </div>
-
-                   <div className="risk-section analogy">
-                     <div className="section-header">
-                       <h3 className="section-title">Think of it like...</h3>
-                     </div>
-                     <p className="section-content analogy-text">{currentRisk.analogy}</p>
-                   </div>
-                  </div>
-
-                  <aside className="risk-image-block" aria-hidden={false}>
-                    <img src={imgSrc} alt={imgAlt} className="risk-image" />
-                    <p className="image-caption"><a style={{ color: "lightgrey"}} href={currentRisk.imageSource} target="_blank" rel="noreferrer">See Sources</a></p>
-                  </aside>
-                </div>
-               </div>
-             </div>
-
-            <button
-                className="nav-button next"
-                onClick={nextSlide}
-                aria-label="Next risk"
-                disabled={animPhase !== 'idle'}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-          </div>
-
-          <div className="progress-dots">
-            {risks.map((risk, index) => (
-                <button
-                    key={risk.id}
-                    className={`dot ${index === currentIndex ? 'active' : ''}`}
-                    onClick={() => goToSlide(index)}
-                    aria-label={`Go to risk ${risk.id}: ${risk.title}`}
-                    disabled={animPhase !== 'idle'}
-                >
-                  <span className="dot-number">{risk.id}</span>
-                </button>
-            ))}
-          </div>
-        </main>
-
-        <footer className="footer">
-          <p>OWASP Foundation. "OWASP Top 10:2021." OWASP Top 10, 2021,</p>
-          <a style={{ color: 'lightgrey'}} href="https://owasp.org/Top10/2021/."  >https://owasp.org/Top10/2021/.</a>
-        </footer>
-      </div>
+         <footer className="footer">
+           <p>OWASP Foundation. "OWASP Top 10:2021." OWASP Top 10, 2021,</p>
+           <a style={{ color: 'lightgrey'}} href="https://owasp.org/Top10/2021/."  >https://owasp.org/Top10/2021/.</a>
+         </footer>
+       </>
+     )}
+    </div>
   );
 }
 
 export default App;
-
