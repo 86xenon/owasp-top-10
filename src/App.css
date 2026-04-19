@@ -333,7 +333,8 @@ body {
 /* Risk Sections - 2x2 grid, larger readable sizing */
 .risk-body {
   display: grid;
-  grid-template-columns: 1fr 320px; /* left stacked sections + fixed image column */
+  /* make the left content take ~2/3 and the image column ~1/3 of the card */
+  grid-template-columns: 2fr 1fr;
   gap: 1.25rem;
   align-items: start;
 }
@@ -376,12 +377,19 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  /* center the image block vertically inside the grid cell */
+  align-self: center;
+  /* ensure it can center horizontally within the grid column when there's extra space */
+  justify-self: center;
 }
 
 .risk-image {
   width: 100%;
-  max-width: 100%;
-  object-fit: cover;
+  /* keep image visually balanced in the 1fr column: don't exceed 320px */
+  max-width: 400px;
+  /* keep aspect ratio and avoid overflowing card height so the block can be centered */
+  max-height: 400px;
+  object-fit: contain;
 }
 
 .image-caption {
