@@ -1,6 +1,10 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import risksData from "./risks.json";
 import './App.css';
+import hackerImg from './assets/hacker.png';
+import heroImg from './assets/hero.png';
+import reactImg from './assets/react.svg';
+import viteImg from './assets/vite.svg';
 
 interface Risk {
   id: number;
@@ -10,6 +14,10 @@ interface Risk {
   how: string;
   analogy: string;
   severity: string;
+  image?: string;
+  imageAlt?: string;
+  imageCaption?: string;
+  imageSource?: string;
 }
 
 function App() {
@@ -104,6 +112,17 @@ function App() {
 
   const currentRisk = risks[currentIndex];
 
+  // Map image file names (from risks.json) to imported assets
+  const imageMap: Record<string, string> = {
+    'hacker.png': hackerImg,
+    'hero.png': heroImg,
+    'react.svg': reactImg,
+    'vite.svg': viteImg,
+  };
+
+  const imgSrc = currentRisk.image ? (imageMap[currentRisk.image] ?? hackerImg) : hackerImg;
+  const imgAlt = currentRisk.imageAlt ?? 'Illustration';
+
   const getSeverityClass = (severity: string) => {
     return severity.toLowerCase();
   };
@@ -143,37 +162,45 @@ function App() {
                 </div>
 
 
-                <div className="risk-sections">
-                  <div className="risk-section">
-                    <div className="section-header">
-                      <h3 className="section-title">What is it?</h3>
-                    </div>
-                    <p className="section-content">{currentRisk.what}</p>
+                {/* risk-body: left = stacked 4 sections, right = image + caption */}
+                <div className="risk-body">
+                  <div className="risk-sections">
+                   <div className="risk-section">
+                     <div className="section-header">
+                       <h3 className="section-title">What is it?</h3>
+                     </div>
+                     <p className="section-content">{currentRisk.what}</p>
+                   </div>
+
+                   <div className="risk-section">
+                     <div className="section-header">
+                       <h3 className="section-title">Why does it matter?</h3>
+                     </div>
+                     <p className="section-content">{currentRisk.why}</p>
+                   </div>
+
+                   <div className="risk-section">
+                     <div className="section-header">
+                       <h3 className="section-title">How to prevent it?</h3>
+                     </div>
+                     <p className="section-content">{currentRisk.how}</p>
+                   </div>
+
+                   <div className="risk-section analogy">
+                     <div className="section-header">
+                       <h3 className="section-title">Think of it like...</h3>
+                     </div>
+                     <p className="section-content analogy-text">{currentRisk.analogy}</p>
+                   </div>
                   </div>
 
-                  <div className="risk-section">
-                    <div className="section-header">
-                      <h3 className="section-title">Why does it matter?</h3>
-                    </div>
-                    <p className="section-content">{currentRisk.why}</p>
-                  </div>
-
-                  <div className="risk-section">
-                    <div className="section-header">
-                      <h3 className="section-title">How to prevent it?</h3>
-                    </div>
-                    <p className="section-content">{currentRisk.how}</p>
-                  </div>
-
-                  <div className="risk-section analogy">
-                    <div className="section-header">
-                      <h3 className="section-title">Think of it like...</h3>
-                    </div>
-                    <p className="section-content analogy-text">{currentRisk.analogy}</p>
-                  </div>
+                  <aside className="risk-image-block" aria-hidden={false}>
+                    <img src={imgSrc} alt={imgAlt} className="risk-image" />
+                    <p className="image-caption">{currentRisk.imageCaption} <a style={{ color: "lightgrey"}} href={currentRisk.imageSource} target="_blank" rel="noreferrer">www.freepik.com</a></p>
+                  </aside>
                 </div>
-              </div>
-            </div>
+               </div>
+             </div>
 
             <button
                 className="nav-button next"

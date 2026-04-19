@@ -7,7 +7,11 @@
       "why": "Attackers could steal personal information, change important data, or take over user accounts.",
       "how": "Ensure users can only access what they’re allowed to by enforcing permissions on the server side.",
       "analogy": "Like someone walking into a locked office because the door was accidentally left open.",
-      "severity": "High"
+      "severity": "High",
+      "image": "hacker.png",
+      "imageAlt": "Hacker illustration",
+      "imageCaption": "Designed by Freepik",
+      "imageSource": "freepik.com"
     },
     {
       "id": 2,
@@ -16,7 +20,11 @@
       "why": "If attackers gain access, they can easily read and misuse this information.",
       "how": "Encrypt sensitive data, use HTTPS, and never store passwords in plain text.",
       "analogy": "Like sending a postcard with your bank details written on it for anyone to read.",
-      "severity": "High"
+      "severity": "High",
+      "image": "crypto-failure.png",
+      "imageAlt": "Cryptographic failure pie chart illustration",
+      "imageCaption": "Statistic from",
+      "imageSource": "https://www.cloudcomputing-news.net/news/cloud-data-encryption-falling-behind/"
     },
     {
       "id": 3,
@@ -25,7 +33,11 @@
       "why": "This can allow attackers to access, modify, or delete data, or even take control of the system.",
       "how": "Validate user input and use secure coding practices like prepared statements for databases.",
       "analogy": "Like tricking a cashier into entering a secret command instead of ringing up an item.",
-      "severity": "High"
+      "severity": "High",
+      "image": "crypto-failure.png",
+      "imageAlt": "React logo illustration",
+      "imageCaption": "Designed by Freepik",
+      "imageSource": "freepik.com"
     },
     {
       "id": 4,
@@ -34,7 +46,11 @@
       "why": "Even if it works, it may contain built-in weaknesses that attackers can exploit.",
       "how": "Plan for security early by thinking through potential risks during the design phase.",
       "analogy": "Like building a house without locks and trying to add them later.",
-      "severity": "Medium"
+      "severity": "Medium",
+      "image": "vite.svg",
+      "imageAlt": "Vite logo illustration",
+      "imageCaption": "Designed by Freepik",
+      "imageSource": "freepik.com"
     },
     {
       "id": 5,
@@ -43,7 +59,11 @@
       "why": "Attackers can take advantage of these easy-to-find weaknesses to gain access.",
       "how": "Secure configurations by changing defaults, disabling unused features, and regularly reviewing settings.",
       "analogy": "Like leaving your front door unlocked with a sign that says ‘key under the mat.’",
-      "severity": "High"
+      "severity": "High",
+      "image": "hacker.png",
+      "imageAlt": "Configuration illustration",
+      "imageCaption": "Designed by Freepik",
+      "imageSource": "freepik.com"
     },
     {
       "id": 6,
@@ -52,7 +72,11 @@
       "why": "Attackers can exploit known vulnerabilities that already have fixes available.",
       "how": "Keep all software up to date and remove anything that is no longer needed.",
       "analogy": "Like using an old lock that burglars already know how to pick.",
-      "severity": "High"
+      "severity": "High",
+      "image": "hero.png",
+      "imageAlt": "Outdated software illustration",
+      "imageCaption": "Designed by Freepik",
+      "imageSource": "freepik.com"
     },
     {
       "id": 7,
@@ -61,7 +85,11 @@
       "why": "Attackers can easily gain access to user accounts and impersonate others.",
       "how": "Use strong passwords, enable multi-factor authentication, and properly manage user sessions.",
       "analogy": "Like using ‘1234’ as a lock combination on your front door.",
-      "severity": "High"
+      "severity": "High",
+      "image": "react.svg",
+      "imageAlt": "Authentication illustration",
+      "imageCaption": "Designed by Freepik",
+      "imageSource": "freepik.com"
     },
     {
       "id": 8,
@@ -70,7 +98,11 @@
       "why": "Attackers could insert malicious updates or alter important data without being detected.",
       "how": "Verify the integrity of data and software using trusted sources and validation methods.",
       "analogy": "Like installing a package that’s been opened and altered without checking it first.",
-      "severity": "Medium"
+      "severity": "Medium",
+      "image": "vite.svg",
+      "imageAlt": "Data integrity illustration",
+      "imageCaption": "Designed by Freepik",
+      "imageSource": "freepik.com"
     },
     {
       "id": 9,
@@ -79,7 +111,11 @@
       "why": "Attacks can go unnoticed, allowing more damage before anyone responds.",
       "how": "Log important actions and monitor systems to quickly detect and respond to threats.",
       "analogy": "Like having no security cameras or alarms in a store.",
-      "severity": "Medium"
+      "severity": "Medium",
+      "image": "hero.png",
+      "imageAlt": "Monitoring illustration",
+      "imageCaption": "Designed by Freepik",
+      "imageSource": "freepik.com"
     },
     {
       "id": 10,
@@ -88,7 +124,11 @@
       "why": "This can expose internal systems or sensitive data that should not be publicly accessible.",
       "how": "Restrict and validate outgoing requests to ensure only safe destinations are allowed.",
       "analogy": "Like convincing a receptionist to fetch confidential files from a restricted room.",
-      "severity": "Medium"
+      "severity": "Medium",
+      "image": "react.svg",
+      "imageAlt": "SSRF illustration",
+      "imageCaption": "Designed by Freepik",
+      "imageSource": "freepik.com"
     }
   ]
 }
