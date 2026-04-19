@@ -34,8 +34,8 @@
       "how": "Validate user input and use secure coding practices like prepared statements for databases.",
       "analogy": "Like tricking a cashier into entering a secret command instead of ringing up an item.",
       "severity": "High",
-      "image": "crypto-failure.png",
-      "imageAlt": "React logo illustration",
+      "image": "syringe.png",
+      "imageAlt": "Transparent syringe illustration",
       "imageCaption": "Designed by Freepik",
       "imageSource": "freepik.com"
     },
@@ -47,8 +47,8 @@
       "how": "Plan for security early by thinking through potential risks during the design phase.",
       "analogy": "Like building a house without locks and trying to add them later.",
       "severity": "Medium",
-      "image": "vite.svg",
-      "imageAlt": "Vite logo illustration",
+      "image": "decrease.jpg",
+      "imageAlt": "Insecure design illustration",
       "imageCaption": "Designed by Freepik",
       "imageSource": "freepik.com"
     },
@@ -60,10 +60,10 @@
       "how": "Secure configurations by changing defaults, disabling unused features, and regularly reviewing settings.",
       "analogy": "Like leaving your front door unlocked with a sign that says ‘key under the mat.’",
       "severity": "High",
-      "image": "hacker.png",
+      "image": "misconfiguration.png",
       "imageAlt": "Configuration illustration",
-      "imageCaption": "Designed by Freepik",
-      "imageSource": "freepik.com"
+      "imageCaption": "Statistic from",
+      "imageSource": "https://www.securitymagazine.com/articles/100630-misconfigurations-drive-80-of-security-exposures#:~:text=A%20report%20from%20XM%20Cyber,more%20than%2025%25%20of%20devices."
     },
     {
       "id": 6,
@@ -73,7 +73,7 @@
       "how": "Keep all software up to date and remove anything that is no longer needed.",
       "analogy": "Like using an old lock that burglars already know how to pick.",
       "severity": "High",
-      "image": "hero.png",
+      "image": "outdated.jpg",
       "imageAlt": "Outdated software illustration",
       "imageCaption": "Designed by Freepik",
       "imageSource": "freepik.com"
@@ -86,7 +86,7 @@
       "how": "Use strong passwords, enable multi-factor authentication, and properly manage user sessions.",
       "analogy": "Like using ‘1234’ as a lock combination on your front door.",
       "severity": "High",
-      "image": "react.svg",
+      "image": "authentication.jpg",
       "imageAlt": "Authentication illustration",
       "imageCaption": "Designed by Freepik",
       "imageSource": "freepik.com"
@@ -99,10 +99,10 @@
       "how": "Verify the integrity of data and software using trusted sources and validation methods.",
       "analogy": "Like installing a package that’s been opened and altered without checking it first.",
       "severity": "Medium",
-      "image": "vite.svg",
+      "image": "integrity.png",
       "imageAlt": "Data integrity illustration",
-      "imageCaption": "Designed by Freepik",
-      "imageSource": "freepik.com"
+      "imageCaption": "Statistic from",
+      "imageSource": "https://market.us/report/data-trust-and-integrity-market/#:~:text=advanced%20digital%20infrastructure.-,Key%20Data%20Trust%20and%20Integrity%20Statistics,strategic%20commitment%20to%20integrity%20management."
     },
     {
       "id": 9,
@@ -112,10 +112,10 @@
       "how": "Log important actions and monitor systems to quickly detect and respond to threats.",
       "analogy": "Like having no security cameras or alarms in a store.",
       "severity": "Medium",
-      "image": "hero.png",
+      "image": "logging.png",
       "imageAlt": "Monitoring illustration",
-      "imageCaption": "Designed by Freepik",
-      "imageSource": "freepik.com"
+      "imageCaption": "Statistic from",
+      "imageSource": "https://medium.com/@instatunnel/insufficient-logging-and-monitoring-the-blind-spot-that-hides-breaches-for-months-222a18616442"
     },
     {
       "id": 10,
@@ -125,7 +125,7 @@
       "how": "Restrict and validate outgoing requests to ensure only safe destinations are allowed.",
       "analogy": "Like convincing a receptionist to fetch confidential files from a restricted room.",
       "severity": "Medium",
-      "image": "react.svg",
+      "image": "forgery.jpg",
       "imageAlt": "SSRF illustration",
       "imageCaption": "Designed by Freepik",
       "imageSource": "freepik.com"

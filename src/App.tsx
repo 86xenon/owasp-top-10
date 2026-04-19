@@ -5,6 +5,15 @@ import hackerImg from './assets/hacker.png';
 import heroImg from './assets/hero.png';
 import reactImg from './assets/react.svg';
 import viteImg from './assets/vite.svg';
+import cryptoImg from './assets/crypto-failure.png';
+import decreaseImg from './assets/decrease.jpg';
+import syringeImg from './assets/syringe.png';
+import misconfigurationImg from './assets/misconfiguration.png';
+import authenticationImg from './assets/authentication.jpg';
+import forgeryImg from './assets/forgery.jpg';
+import loggingImg from './assets/logging.png';
+import integrityImg from './assets/integrity.png';
+import outdatedImg from './assets/outdated.jpg';
 
 interface Risk {
   id: number;
@@ -118,6 +127,16 @@ function App() {
     'hero.png': heroImg,
     'react.svg': reactImg,
     'vite.svg': viteImg,
+      'crypto-failure.png': cryptoImg,
+        'decrease.jpg': decreaseImg,
+        'syringe.png': syringeImg,
+      'misconfiguration.png': misconfigurationImg,
+        'authentication.jpg': authenticationImg,
+        'forgery.jpg': forgeryImg,
+        'logging.png': loggingImg,
+        'integrity.png': integrityImg,
+        'outdated.jpg': outdatedImg,
+
   };
 
   const imgSrc = currentRisk.image ? (imageMap[currentRisk.image] ?? hackerImg) : hackerImg;
@@ -196,7 +215,7 @@ function App() {
 
                   <aside className="risk-image-block" aria-hidden={false}>
                     <img src={imgSrc} alt={imgAlt} className="risk-image" />
-                    <p className="image-caption">{currentRisk.imageCaption} <a style={{ color: "lightgrey"}} href={currentRisk.imageSource} target="_blank" rel="noreferrer">www.freepik.com</a></p>
+                    <p className="image-caption"><a style={{ color: "lightgrey"}} href={currentRisk.imageSource} target="_blank" rel="noreferrer">See Sources</a></p>
                   </aside>
                 </div>
                </div>
