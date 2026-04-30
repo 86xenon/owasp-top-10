@@ -43,6 +43,23 @@ const Sources: React.FC<SourcesProps> = () => {
             </div>
           </li>
         ))}
+          <li className="source-item">
+              <span className="source-index">11</span>
+              <div className="source-details">
+                  <div className="source-title">Primary Source</div>
+                    <div className="source-caption">OWASP Top 10:2021</div>
+                    <div className="source-link-wrap">
+                        <a
+                            style={{ color: '#bbf5ff' }}
+                            href="https://owasp.org/Top10/2021/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            https://owasp.org/Top10/2021/
+                        </a>
+                    </div>
+              </div>
+          </li>
       </ol>
 
     </section>

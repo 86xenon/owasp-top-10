@@ -34,7 +34,7 @@
       "how": "Validate user input and use secure coding practices like prepared statements for databases.",
       "analogy": "Like tricking a cashier into entering a secret command instead of ringing up an item.",
       "severity": "High",
-      "image": "syringe.png",
+
       "imageAlt": "Transparent syringe illustration",
       "imageCaption": "Designed by Freepik",
       "imageSource": "https://www.freepik.com"
