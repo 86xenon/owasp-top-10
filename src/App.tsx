@@ -52,9 +52,9 @@ function App() {
     'outdated.jpg': outdatedImg,
   };
 
-  const getSeverityClass = (severity: string) => {
-    return severity.toLowerCase();
-  };
+  // const getSeverityClass = (severity: string) => {
+  //   return severity.toLowerCase();
+  // };
 
   return (
       <div className="app">

@@ -75,6 +75,16 @@ body {
 
 .risk-item.right-aligned .risk-content-wrapper {
   flex-direction: row-reverse;
+  text-align: right;
+}
+
+.lefty {
+  flex-direction: row;
+}
+
+.righty {
+  flex-direction: row-reverse;
+  text-align: right;
 }
 
 /* Risk Text Section */
