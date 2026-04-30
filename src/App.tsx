@@ -1,13 +1,13 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import {useState} from 'react';
 import risksData from "./risks.json";
 import './App.css';
-import hackerImg from './assets/hacker.png';
+import hackerImg from './assets/hacker.webp';
 import heroImg from './assets/hero.png';
 import reactImg from './assets/react.svg';
 import viteImg from './assets/vite.svg';
 import cryptoImg from './assets/crypto-failure.png';
 import decreaseImg from './assets/decrease.jpg';
-import syringeImg from './assets/syringe.png';
+import sqlImg from './assets/sql-image.png';
 import misconfigurationImg from './assets/misconfiguration.png';
 import authenticationImg from './assets/authentication.jpg';
 import forgeryImg from './assets/forgery.jpg';
@@ -18,251 +18,133 @@ import Sources from './sources';
 import TopNav from './topnav';
 
 interface Risk {
-  id: number;
-  title: string;
-  what: string;
-  why: string;
-  how: string;
-  analogy: string;
-  severity: string;
-  image?: string;
-  imageAlt?: string;
-  imageCaption?: string;
-  imageSource?: string;
+    id: number;
+    title: string;
+    what: string;
+    why: string;
+    how: string;
+    analogy: string;
+    severity: string;
+    image?: string;
+    imageAlt?: string;
+    imageCaption?: string;
+    imageSource?: string;
 }
 
 function App() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  // animation phase: 'idle' | 'exiting' | 'entering'
-  const [animPhase, setAnimPhase] = useState<'idle' | 'exiting' | 'entering'>('idle');
-  const [page, setPage] = useState<'home' | 'sources'>('home');
-  const risks: Risk[] = risksData.owaspTop10;
+    const [page, setPage] = useState<'home' | 'sources'>('home');
+    const risks: Risk[] = risksData.owaspTop10;
 
-  const OUT_MS = 300; // match CSS fadeOut duration
-  const IN_MS = 600;  // match CSS fadeInUp duration
-
-  const outTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const inTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  // refs to hold latest values for keyboard handler and to avoid effect deps
-  const currentIndexRef = useRef(currentIndex);
-  const animPhaseRef = useRef(animPhase);
-
-  useEffect(() => {
-    currentIndexRef.current = currentIndex;
-    animPhaseRef.current = animPhase;
-  }, [currentIndex, animPhase]);
-
-  const clearTimers = useCallback(() => {
-    if (outTimeout.current) {
-      clearTimeout(outTimeout.current);
-      outTimeout.current = null;
-    }
-    if (inTimeout.current) {
-      clearTimeout(inTimeout.current);
-      inTimeout.current = null;
-    }
-  }, []);
-
-  const navigateTo = useCallback((newIndex: number) => {
-    // use latest animPhase via ref to avoid race conditions
-    if (animPhaseRef.current !== 'idle') return; // block if already animating
-    if (newIndex === currentIndexRef.current) return;
-
-    // clear any stray timers before starting
-    clearTimers();
-
-    setAnimPhase('exiting');
-
-    outTimeout.current = setTimeout(() => {
-      setCurrentIndex(newIndex);
-      setAnimPhase('entering');
-
-      inTimeout.current = setTimeout(() => {
-        setAnimPhase('idle');
-      }, IN_MS);
-    }, OUT_MS);
-  }, [clearTimers]);
-
-  const nextSlide = () => {
-    navigateTo((currentIndexRef.current + 1) % risks.length);
-  };
-
-  const prevSlide = () => {
-    navigateTo((currentIndexRef.current - 1 + risks.length) % risks.length);
-  };
-
-  const goToSlide = (index: number) => {
-    navigateTo(index);
-  };
-
-  useEffect(() => {
-    // keyboard navigation uses refs to avoid adding functions to deps
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowRight') {
-        // only navigate when idle
-        if (animPhaseRef.current === 'idle') {
-          navigateTo((currentIndexRef.current + 1) % risks.length);
-        }
-      }
-      if (e.key === 'ArrowLeft') {
-        if (animPhaseRef.current === 'idle') {
-          navigateTo((currentIndexRef.current - 1 + risks.length) % risks.length);
-        }
-      }
-    };
-    window.addEventListener('keydown', handler);
-    return () => {
-      window.removeEventListener('keydown', handler);
-    };
-  }, [navigateTo, risks.length]);
-
-  useEffect(() => {
-    // cleanup on unmount
-    return () => clearTimers();
-  }, [clearTimers]);
-
-  const currentRisk = risks[currentIndex];
-
-  // Map image file names (from risks.json) to imported assets
-  const imageMap: Record<string, string> = {
-    'hacker.png': hackerImg,
-    'hero.png': heroImg,
-    'react.svg': reactImg,
-    'vite.svg': viteImg,
-      'crypto-failure.png': cryptoImg,
+    // Map image file names (from risks.json) to imported assets
+    const imageMap: Record<string, string> = {
+        'hacker.webp': hackerImg,
+        'hero.png': heroImg,
+        'react.svg': reactImg,
+        'vite.svg': viteImg,
+        'crypto-failure.png': cryptoImg,
         'decrease.jpg': decreaseImg,
-        'syringe.png': syringeImg,
-      'misconfiguration.png': misconfigurationImg,
+        'sql-image.png': sqlImg,
+        'misconfiguration.png': misconfigurationImg,
         'authentication.jpg': authenticationImg,
         'forgery.jpg': forgeryImg,
         'logging.png': loggingImg,
         'integrity.png': integrityImg,
         'outdated.jpg': outdatedImg,
+    };
 
-  };
+    // const getSeverityClass = (severity: string) => {
+    //   return severity.toLowerCase();
+    // };
 
-  const imgSrc = currentRisk.image ? (imageMap[currentRisk.image] ?? hackerImg) : hackerImg;
-  const imgAlt = currentRisk.imageAlt ?? 'Illustration';
+    return (
+        <div className="app">
+            <TopNav active={page} onNavigate={(p) => setPage(p)}/>
+            {page === 'sources' ? (
+                <Sources/>
+            ) : (
+                <>
+                    <header className="header">
+                        <h1 className="main-title">OWASP TOP 10</h1>
+                        <p className="subtitle">WEB APPLICATION SECURITY RISKS</p>
+                    </header>
+                    <main className="main-content">
+                        <div className="introduction">
+                            <p className="intro-text">The OWASP Top 10 is a list of the most common and critical security risks found in websites. It was created by the Open Worldwide Application Security Project (OWASP) to help developers, businesses, and everyday users become aware of the biggest safety concerns. Learning about these risks helps people build safer websites and better protect personal and sensitive data.</p>
+                            <p className="scroll-prompt">↓ &nbsp; Scroll down to learn about each risk and how to prevent it &nbsp; ↓</p>
+                        </div>
+                        {risks.map((risk, index) => {
+                            const imgSrc = risk.image ? (imageMap[risk.image] ?? null) : null;
+                            const imgAlt = risk.imageAlt ?? 'Illustration';
+                            const isEven = index % 2 === 0;
 
-  const getSeverityClass = (severity: string) => {
-    return severity.toLowerCase();
-  };
+                            return (
+                                <article
+                                    key={risk.id}
+                                    className={`risk-item ${isEven ? 'left-aligned' : 'right-aligned'}`}
+                                >
+                                    <div className="risk-content-wrapper">
+                                        <div className={`risk-text-section ${isEven ? 'lefty' : 'righty'}`}>
+                                            <h2 className="risk-title">
+                                                #{risk.id} {risk.title.toUpperCase()}
+                                            </h2>
+                                            <div className="body-details">
+                                                {!isEven && imgSrc && (
+                                                    <div className="risk-image-section">
+                                                        <img src={imgSrc} alt={imgAlt} className="risk-image"/>
+                                                    </div>
+                                                )}
+                                                <div className={`risk-details ${isEven ? 'left-pad' : 'right-pad'}`}>
+                                                    <div className="detail-item">
+                                                        <h3 className="detail-label">WHAT IS IT?</h3>
+                                                        <p className="detail-text">{risk.what}</p>
+                                                    </div>
 
-  return (
-    <div className="app">
-      <TopNav active={page} onNavigate={(p) => setPage(p)} />
-      {page === 'sources' ? (
-        <Sources />
-      ) : (
-        <>
-         <header className="header">
-           <div className="header-content">
-             <h1 className="main-title">OWASP TOP 10</h1>
-             <p className="subtitle">Web Application Security Risks</p>
-           </div>
-         </header>
+                                                    <div className="detail-item">
+                                                        <h3 className="detail-label">WHY DOES IT MATTER?</h3>
+                                                        <p className="detail-text">{risk.why}</p>
+                                                    </div>
 
-         <main className="main-content">
-           <div className="carousel-container">
-             <button
-                 className="nav-button prev"
-                 onClick={prevSlide}
-                 aria-label="Previous risk"
-                 disabled={animPhase !== 'idle'}
-             >
-               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                 <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-               </svg>
-             </button>
+                                                    <div className="detail-item">
+                                                        <h3 className="detail-label">HOW TO PREVENT IT?</h3>
+                                                        <p className="detail-text">{risk.how}</p>
+                                                    </div>
 
-             <div className="risk-card">
-               <div className={`risk-content ${animPhase === 'exiting' ? 'exiting' : ''} ${animPhase === 'entering' ? 'entering' : ''}`}>
-                 <div className="risk-header">
-                     <div className="risk-number-name">
-                         <span className="risk-number">#{currentRisk.id}</span>
-                         <h2 className="risk-title">{currentRisk.title}</h2>
-                     </div>
-                   <span className={`severity-badge ${getSeverityClass(currentRisk.severity)}`}>
-                   {currentRisk.severity} Risk
-                 </span>
-                 </div>
+                                                    <div className="detail-item">
+                                                        <h3 className="detail-label" style={{color: "#ffb000"}}>THINK OF
+                                                            IT LIKE...</h3>
+                                                        <p className="detail-text">{risk.analogy}</p>
+                                                    </div>
+                                                </div>
+                                                {isEven && imgSrc && (
+                                                    <div className="risk-image-section">
+                                                        <img src={imgSrc} alt={imgAlt} className="risk-image"/>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr className="risk-divider" />
+                                </article>
+                            );
+                        })}
+                    </main>
 
-
-                 {/* risk-body: left = stacked 4 sections, right = image + caption */}
-                 <div className="risk-body">
-                   <div className="risk-sections">
-                    <div className="risk-section">
-                      <div className="section-header">
-                        <h3 className="section-title">What is it?</h3>
-                      </div>
-                      <p className="section-content">{currentRisk.what}</p>
-                    </div>
-
-                    <div className="risk-section">
-                      <div className="section-header">
-                        <h3 className="section-title">Why does it matter?</h3>
-                      </div>
-                      <p className="section-content">{currentRisk.why}</p>
-                    </div>
-
-                    <div className="risk-section">
-                      <div className="section-header">
-                        <h3 className="section-title">How to prevent it?</h3>
-                      </div>
-                      <p className="section-content">{currentRisk.how}</p>
-                    </div>
-
-                    <div className="risk-section analogy">
-                      <div className="section-header">
-                        <h3 className="section-title">Think of it like...</h3>
-                      </div>
-                      <p className="section-content analogy-text">{currentRisk.analogy}</p>
-                    </div>
-                   </div>
-
-                   <aside className="risk-image-block" aria-hidden={false}>
-                     <img src={imgSrc} alt={imgAlt} className="risk-image" />
-                   </aside>
-                 </div>
-                </div>
-              </div>
-
-             <button
-                 className="nav-button next"
-                 onClick={nextSlide}
-                 aria-label="Next risk"
-                 disabled={animPhase !== 'idle'}
-             >
-               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                 <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-               </svg>
-             </button>
-           </div>
-
-           <div className="progress-dots">
-             {risks.map((risk, index) => (
-                 <button
-                     key={risk.id}
-                     className={`dot ${index === currentIndex ? 'active' : ''}`}
-                     onClick={() => goToSlide(index)}
-                     aria-label={`Go to risk ${risk.id}: ${risk.title}`}
-                     disabled={animPhase !== 'idle'}
-                 >
-                   <span className="dot-number">{risk.id}</span>
-                 </button>
-             ))}
-           </div>
-         </main>
-
-         <footer className="footer">
-           <p>OWASP Foundation. "OWASP Top 10:2021." OWASP Top 10, 2021,</p>
-           <a style={{ color: 'lightgrey'}} href="https://owasp.org/Top10/2021/."  >https://owasp.org/Top10/2021/.</a>
-         </footer>
-       </>
-     )}
-    </div>
-  );
+                    <footer className="footer">
+                        <p>OWASP Foundation. "OWASP Top 10:2021." OWASP Top 10, 2021,</p>
+                        <a
+                            style={{color: '#bbf5ff'}}
+                            href="https://owasp.org/Top10/2021/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            https://owasp.org/Top10/2021/
+                        </a>
+                        <p className="created-by">Created By Zoe Kerchal</p>
+                    </footer>
+                </>
+            )}
+        </div>
+    );
 }
 
 export default App;

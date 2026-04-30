@@ -8,10 +8,10 @@
       "how": "Ensure users can only access what they’re allowed to by enforcing permissions on the server side.",
       "analogy": "Like someone walking into a locked office because the door was accidentally left open.",
       "severity": "High",
-      "image": "hacker.png",
+      "image": "hacker.webp",
       "imageAlt": "Hacker illustration",
-      "imageCaption": "Designed by Freepik",
-      "imageSource": "https://www.freepik.com"
+      "imageCaption": "Creative Commons license - Image sourced from",
+      "imageSource": "https://www.neaterheat.co.uk/boilers/"
     },
     {
       "id": 2,
@@ -34,8 +34,8 @@
       "how": "Validate user input and use secure coding practices like prepared statements for databases.",
       "analogy": "Like tricking a cashier into entering a secret command instead of ringing up an item.",
       "severity": "High",
-      "image": "syringe.png",
-      "imageAlt": "Transparent syringe illustration",
+      "image": "sql-image.png",
+      "imageAlt": "SQL Database Clip Art",
       "imageCaption": "Designed by Freepik",
       "imageSource": "https://www.freepik.com"
     },
