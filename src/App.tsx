@@ -1,13 +1,13 @@
 import {useState} from 'react';
 import risksData from "./risks.json";
 import './App.css';
-import hackerImg from './assets/hacker.png';
+import hackerImg from './assets/hacker.webp';
 import heroImg from './assets/hero.png';
 import reactImg from './assets/react.svg';
 import viteImg from './assets/vite.svg';
 import cryptoImg from './assets/crypto-failure.png';
 import decreaseImg from './assets/decrease.jpg';
-import syringeImg from './assets/syringe.png';
+import sqlImg from './assets/sql-image.png';
 import misconfigurationImg from './assets/misconfiguration.png';
 import authenticationImg from './assets/authentication.jpg';
 import forgeryImg from './assets/forgery.jpg';
@@ -37,13 +37,13 @@ function App() {
 
     // Map image file names (from risks.json) to imported assets
     const imageMap: Record<string, string> = {
-        'hacker.png': hackerImg,
+        'hacker.webp': hackerImg,
         'hero.png': heroImg,
         'react.svg': reactImg,
         'vite.svg': viteImg,
         'crypto-failure.png': cryptoImg,
         'decrease.jpg': decreaseImg,
-        'syringe.png': syringeImg,
+        'sql-image.png': sqlImg,
         'misconfiguration.png': misconfigurationImg,
         'authentication.jpg': authenticationImg,
         'forgery.jpg': forgeryImg,
@@ -67,8 +67,11 @@ function App() {
                         <h1 className="main-title">OWASP TOP 10</h1>
                         <p className="subtitle">WEB APPLICATION SECURITY RISKS</p>
                     </header>
-
                     <main className="main-content">
+                        <div className="introduction">
+                            <p className="intro-text">The OWASP Top 10 is a list of the most common and critical security risks found in websites. It was created by the Open Worldwide Application Security Project (OWASP) to help developers, businesses, and everyday users become aware of the biggest safety concerns. Learning about these risks helps people build safer websites and better protect personal and sensitive data.</p>
+                            <p className="scroll-prompt">↓ &nbsp; Scroll down to learn about each risk and how to prevent it &nbsp; ↓</p>
+                        </div>
                         {risks.map((risk, index) => {
                             const imgSrc = risk.image ? (imageMap[risk.image] ?? null) : null;
                             const imgAlt = risk.imageAlt ?? 'Illustration';
@@ -120,6 +123,7 @@ function App() {
                                             </div>
                                         </div>
                                     </div>
+                                    <hr className="risk-divider" />
                                 </article>
                             );
                         })}
@@ -135,6 +139,7 @@ function App() {
                         >
                             https://owasp.org/Top10/2021/
                         </a>
+                        <p className="created-by">Created By Zoe Kerchal</p>
                     </footer>
                 </>
             )}

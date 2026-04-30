@@ -10,7 +10,7 @@
 
 body {
   font-family: 'Oswald', sans-serif;
-  background: linear-gradient(135deg, #091620 0%, #0f3747 100%);
+  background: linear-gradient(135deg, #071420 0%, #0d2d3a 100%);
   background-attachment: fixed;
   color: #ffffff;
   line-height: 1.6;
@@ -31,17 +31,43 @@ body {
   flex-direction: column;
     align-items: flex-end;
   justify-content: flex-end;
-  margin-bottom: 4.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .main-title {
   font-family: 'Staatliches', cursive;
-  font-size: 4.7rem;
+  font-size: 5rem;
   color: #ffb000;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 0.5rem;
   line-height: 1;
+}
+
+.introduction {
+  display: flex;
+  font-size: 1.55rem;
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 7rem;
+  background-color: #1d3b49;
+  border-radius: 15px;
+  flex-direction: column;
+  padding: 25px 55px;
+  gap: 2rem;
+}
+
+.intro-text {
+  color: white;
+}
+
+.scroll-prompt {
+  color: #ffb000;
+  font-size: 2.15rem;
+  /*font-weight: bold;*/
+  font-family: "Staatliches", cursive;
 }
 
 .subtitle {
@@ -57,21 +83,28 @@ body {
 .main-content {
   flex: 1;
   padding: 0 4rem 4rem;
-  max-width: 95%;
+  max-width: 90%;
   margin: 0 auto;
   width: 100%;
 }
 
 .body-details {
   display: flex;
-    flex-direction: row;
-  justify-content: space-between;
+  flex-direction: row;
+  /* Make children align and stretch to the same height so images can size to the text block height */
+  align-items: stretch;
+  gap: 1.5rem;
   width: 100%;
+}
+
+.risk-divider {
+  margin-top: 8rem;
+  color: rgba(161, 161, 161, 0.76);
 }
 
 /* Risk Item - No cards, just content */
 .risk-item {
-  margin-bottom: 12rem;
+  margin-bottom: 8rem;
 }
 
 .risk-content-wrapper {
@@ -117,12 +150,12 @@ body {
 
 .risk-title {
   font-family: 'Staatliches', cursive;
-  font-size: 5.25rem;
+  font-size: 4.5rem;
   color: #daff00;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   line-height: 1.1;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3.5rem;
 }
 
 /* Risk Details */
@@ -130,7 +163,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  max-width: 60%;
+  /* prefer 65% width but allow it to shrink on small screens */
+  flex: 0 1 65%;
+  max-width: 65%;
 }
 
 .detail-item {
@@ -141,7 +176,7 @@ body {
 
 .detail-label {
   font-family: 'Staatliches', cursive;
-  font-size: 2.75rem;
+  font-size: 2.5rem;
   color: #56e8ef;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -150,7 +185,7 @@ body {
 
 .detail-text {
   font-family: 'Oswald', sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: #ffffff;
   line-height: 1.5;
   font-weight: 300;
@@ -158,25 +193,28 @@ body {
 
 /* Risk Image Section - No borders */
 .risk-image-section {
-  flex: 0 0 500px;
+  flex: 1 1 35%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 100%;
-
+  justify-content: center;
+  /* Ensure the image container stretches to the same height as the text column */
+  align-self: stretch;
 }
 
 .risk-image {
-  max-width: 90%;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
   max-height: 100%;
+  object-fit: contain;
   border-radius: 12px;
+  display: block;
 }
 
 /* Footer */
 .footer {
   background: transparent;
-  padding: 3rem 4rem;
+  padding-bottom: 3rem;
   text-align: center;
   margin-top: auto;
 }
@@ -199,6 +237,11 @@ body {
 .footer a:hover {
   color: #35d0d8;
   text-decoration: underline;
+}
+
+.created-by {
+  color: white !important;
+  margin-top: 2rem;
 }
 
 /* === Additional styles for TopNav and Sources components === */
@@ -228,7 +271,7 @@ body {
   grid-area: header;
   padding: 2.5rem 3.5rem 3.5rem; /* keep similar spacing while fitting on a row */
   display: flex;
-  align-items: right;
+  align-items: flex-end;
   justify-content: flex-end; /* header text remains right-aligned on wide screens */
 }
 
@@ -253,12 +296,12 @@ body {
 
 .topnav-link {
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 2px solid rgba(171, 239, 249, 0.88);
   color: #bbf5ff;
   padding: 0.45rem 0.9rem;
   border-radius: 8px;
   font-family: 'Oswald', sans-serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   cursor: pointer;
@@ -268,13 +311,14 @@ body {
 .topnav-link:hover {
   background: rgba(255,255,255,0.03);
   color: #ffffff;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .topnav-link.active {
   background: linear-gradient(90deg, #35d0d8 0%, #bbf5ff 100%);
-  color: #072027;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  color: #011217;
+  font-weight: bolder;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.4);
 }
 
 /* Give the nav some breathing room on the left side of the layout */
@@ -333,7 +377,7 @@ body {
   display: flex;
   gap: 1rem;
   align-items: flex-start;
-  background: rgba(255,255,255,0.02);
+  background: rgb(23, 55, 71);
   padding: 1rem;
   border-radius: 10px;
 }
@@ -360,7 +404,7 @@ body {
 }
 
 .source-caption {
-  color: #bbf5ff;
+  color: #d9eff3;
   font-size: 1.5rem;
 }
 
@@ -369,7 +413,7 @@ body {
 }
 
 .source-link {
-  color: #bbf5ff;
+  color: #58dcf1;
   text-decoration: none;
   font-family: 'Oswald', sans-serif;
   font-size: 1.25rem;
@@ -589,6 +633,16 @@ body {
 
   .source-index {
     min-width: auto;
+  }
+
+  .risk-image, .risk-image-section {
+    display: none;
+  }
+
+  .risk-details, .risk-item, .risk-title {
+    width: 100%;
+    align-items: flex-start;
+    text-align: left;
   }
 }
 
