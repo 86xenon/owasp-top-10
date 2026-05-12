@@ -1,4 +1,4 @@
-## made this for an english class, got an 18/20, idk why
+## made this for an english class, got 18/20, idk why
 
 [website](https://86xenon.github.io/owasp-top-10/)
 
