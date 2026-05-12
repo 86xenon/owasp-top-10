@@ -139,7 +139,6 @@ function App() {
                         >
                             https://owasp.org/Top10/2021/
                         </a>
-                        <p className="created-by">Created By Zoe Kerchal</p>
                     </footer>
                 </>
             )}
